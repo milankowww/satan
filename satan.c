@@ -13,8 +13,7 @@ typedef struct {
 
 void Hash_init(Hash *h)
 {
-	h->size = 0;
-	h->elems = malloc(0);
+	h->elems = malloc(h->size = 0);
 }
 
 void Hash_set(Hash *h, int key, int val)
@@ -158,7 +157,7 @@ void interpret(int *prog, int len)
 			Hash_set(&heap, stack[sp - 1], getchar());
 			break;
 		case 20: /* inum */
-			if (scanf("%d", &arg))
+			if (scanf("%d", &arg) == 1)
 				Hash_set(&heap, stack[sp - 1], arg);
 			break;
 		case 21: /* ochr */
