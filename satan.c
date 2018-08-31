@@ -19,6 +19,14 @@ void Hash_init(Hash *h)
 void Hash_set(Hash *h, int key, int val)
 {
 	Value v;
+	int i;
+	
+	for (i = 0; i < h->size; ++i)
+		if (h->elems[i].key == key) {
+			h->elems[i].val = val;
+			return;
+		}
+	
 	v.key = key;
 	v.val = val;
 
